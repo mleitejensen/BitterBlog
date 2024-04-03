@@ -43,9 +43,19 @@ header a {
   padding: 5% 10%;
 }
 
+.loginForm *{
+  margin: 0 auto;
+}
+
 .loginForm input{
   border: 0px;
   border-bottom: 1px solid;
   font-size: 1.5rem;
   margin: 1vh 0px;
+}
+
+.loginForm button{
+  position: relative;
+  left: 50%;
+  translate: -50%;
 }
