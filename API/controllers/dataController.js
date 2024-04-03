@@ -18,12 +18,15 @@ const getLatest = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
+    const {username, title, body} = req.body
     try{
-        const {username, body} = req.body
+        if(!username || !body || !title){
+            throw Error("All fields must be filled.")
+        }
         if(body.length > maxBodyLength){
             throw Error("Max body length is 100 characters")
         } 
-        const created = await DataModel.create({username, body})
+        const created = await DataModel.create({username, title, body})
         res.status(202).json(created)
     } catch(error){
         res.status(400).json({ error: error.message })
@@ -31,8 +34,8 @@ const createPost = async (req, res) => {
 }
 
 const getUserPosts = async (req, res) => {
+    const user = req.params.user
     try{
-        const user = req.params.user
         const posts = await DataModel.find({username: user}).sort({ createdAt: 'desc'}).exec()
 
         if(posts.length === 0){
