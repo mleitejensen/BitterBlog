@@ -1,15 +1,15 @@
 import { useState } from "react"
-
+import { useLogin } from "../hooks/useLogin"
 
 const Login = () => {
-
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const {login, error, isLoading} = useLogin()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(username, password)
+        await login(username, password)
     }
 
     return(
@@ -21,6 +21,9 @@ const Login = () => {
             <input type="password" name="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             {/* error message here */}
             <br />
+
+            {error && <div className="error">{error}</div>}
+
             <button>Sign in</button>
         </form>
         </>
