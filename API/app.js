@@ -17,11 +17,11 @@ mongoose.connect(dbURI)
     .then(() => {
         app.listen(port)
         console.log("Connected to database on port " + port)
+
+        app.use(authRoutes)
+        app.use(dataRoutes)
     })
     .catch((err) => {
         console.log(err)
     })
 
-
-app.use(authRoutes)
-app.use(dataRoutes)

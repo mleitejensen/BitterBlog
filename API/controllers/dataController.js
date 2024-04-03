@@ -1,6 +1,6 @@
 const getLatest = (req, res) => {
 
-    res.stastu(202).json({message: "hello"})
+    res.status(202).json({message: "hello"})
 }
 
 module.exports = {
