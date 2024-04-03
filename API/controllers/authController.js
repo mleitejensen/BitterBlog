@@ -21,9 +21,6 @@ const login = async (req, res) => {
 
     try{
       const user = await User.login(username, password)
-      if(user.admin === false){
-        throw Error("You are not an admin")
-      }
       const token = createWebToken(user._id)
       res.status(200).json({username, token})
     }catch(error){
