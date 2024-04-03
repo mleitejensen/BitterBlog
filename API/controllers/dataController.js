@@ -10,6 +10,7 @@ const getLatest = async (req, res) => {
         for(let i = 0; i < latestPosts; i++){
             latestList.push(dataList[i])
         }
+        
         res.status(202).json(latestList)
     } catch(error){
         res.status(400).json({ error: error.message })
@@ -29,7 +30,23 @@ const createPost = async (req, res) => {
     }
 }
 
+const getUserPosts = async (req, res) => {
+    try{
+        const user = req.params.user
+        const posts = await DataModel.find({username: user}).sort({ createdAt: 'desc'}).exec()
+
+        if(posts.length === 0){
+            throw Error("User has no posts, or the user does not exist")
+        }
+        
+        res.status(202).json(posts)
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     getLatest,
-    createPost
+    createPost,
+    getUserPosts,
 }
