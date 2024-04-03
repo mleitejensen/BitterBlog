@@ -11,10 +11,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 6,
-  },
-  admin: {
-    type: Boolean,
-    required: true,
   }
 });
 
@@ -32,7 +28,7 @@ userSchema.statics.signup = async function(username, password) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ username, password: hash, admin: false })
+    const user = await this.create({ username, password: hash })
 
     console.log(`[userModel] ${user.username} created`)
     return user
