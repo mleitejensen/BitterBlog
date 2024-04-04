@@ -59,3 +59,7 @@ header a {
   left: 50%;
   translate: -50%;
 }
+
+.post{
+  font-size: 3rem;
+}

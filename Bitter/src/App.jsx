@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Posts from './pages/Posts'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route 
-              path="/" 
+              path="/home/:user" 
               element={<Home />} 
             />
             <Route 
@@ -26,6 +27,10 @@ function App() {
             <Route 
               path="/signup" 
               element={<Signup />} 
+            />
+            <Route 
+              path="/" 
+              element={<Posts />} 
             />
           </Routes>
         </div>
