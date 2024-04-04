@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Posts from './pages/Posts'
+import User from './pages/User'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
             <Route 
               path="/" 
               element={<Posts />} 
+            />
+            <Route 
+              path="/:user" 
+              element={<User />} 
             />
           </Routes>
         </div>
