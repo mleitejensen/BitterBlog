@@ -17,15 +17,16 @@ const Navbar = () => {
         <Link to="/">
           <h1>Logo</h1>
         </Link>
-        <Link to="/home/:user">
-          {!user && (
+        {!user && (
+        <Link to="/">
             <h1>Bitter</h1>
-          )}
-          {user && (
-            <h1>Bitter - {user.username}</h1>
-          )}
         </Link>
-
+        )}
+        {user && (
+        <Link to={`/home/${user.username}`}>
+            <h1>Bitter - {user.username}</h1>
+        </Link>
+        )}
         {user && (
           <div>
             <button onClick={handleClick}>Logout</button>
