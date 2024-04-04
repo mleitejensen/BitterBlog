@@ -12,6 +12,7 @@ header {
 }
 nav {
   max-width: 1400px;
+  max-height: 100px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
@@ -19,12 +20,8 @@ nav {
   justify-content: space-between;
 }
 
-nav .username{
-  font-size: 20px;
-}
-
-nav div a{
-  font-size: 20px;
+.navLoginSignup{
+  display: flex;
 }
 
 header a {
@@ -45,6 +42,7 @@ header a {
 
 .loginForm *{
   margin: 0 auto;
+  text-align: center;
 }
 
 .loginForm input{
@@ -52,12 +50,23 @@ header a {
   border-bottom: 1px solid;
   font-size: 1.5rem;
   margin: 1vh 0px;
+  width: 100%;
+  text-align: left;
 }
 
 .loginForm button{
   position: relative;
   left: 50%;
   translate: -50%;
+}
+
+.error{
+  background-color: red;
+  border-radius: 4px;
+  color: white;
+  min-height: 20px;
+  margin: 1rem 0;
+  padding: 0.3rem 0.1rem;
 }
 
 .post{
