@@ -14,8 +14,10 @@ const Navbar = () => {
   return (
     <header>
         <nav>
-          <h1>Logo</h1>
         <Link to="/">
+          <h1>Logo</h1>
+        </Link>
+        <Link to="/home/:user">
           {!user && (
             <h1>Bitter</h1>
           )}

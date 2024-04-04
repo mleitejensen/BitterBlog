@@ -24,7 +24,7 @@ const Login = () => {
             {/* error message here */}
             {error && <div className="error">{error}</div>}
 
-            <button>Sign in</button>
+            <button disabled={isLoading}>Sign in</button>
         </form>
         </>
     )
