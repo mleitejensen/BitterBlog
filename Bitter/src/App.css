@@ -5,6 +5,10 @@
   place-items: center;
 }
 
+textarea {
+  resize: none;
+}
+
 header {
   background: var(--secondary);
   color: var(--text);
@@ -61,6 +65,7 @@ header a {
 }
 
 .error{
+  text-align: center;
   background-color: red;
   border-radius: 4px;
   color: white;
@@ -70,10 +75,32 @@ header a {
 }
 
 .post{
+  box-sizing: border-box;
   border: 1px solid black;
   border-radius: 4px;
   margin: 1rem auto;
-  padding: 0.2rem;
+  padding: 0.2rem 1rem;
   font-size: 3rem;
-  max-width: 1000px;
+  max-width: 70%;
+  flex-wrap: wrap;
+}
+
+.publish{
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 4px;
+  max-width: 70%;
+  margin: 0 auto;
+  display: flexbox;
+}
+
+.publish input{
+  border: none;
+  border-bottom: 1px;
+}
+
+.publish *{
+  margin: 1rem 1rem;
+  font-size: 2rem;
 }
