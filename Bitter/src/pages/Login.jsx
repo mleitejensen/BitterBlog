@@ -19,9 +19,9 @@ const Login = () => {
             <input type="text" name="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/> 
             <br />
             <input type="password" name="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            {/* error message here */}
             <br />
 
+            {/* error message here */}
             {error && <div className="error">{error}</div>}
 
             <button>Sign in</button>
