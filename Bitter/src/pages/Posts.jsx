@@ -28,14 +28,14 @@ const Posts = () => {
     return(
         <>
         {posts && posts.map((post) => (
-            <>
+            <div className="post" key={post._id}>
             {post &&
-                <div className="post" key={post._id}>
-                    <h3>{post.title}</h3>
-                    <p>{post.body}</p>
-                </div>
-            }
+            <>
+                <h3>{post.title}</h3>
+                <p>{post.body}</p>
             </>
+            }
+            </div>
         ))}
         
         </>
