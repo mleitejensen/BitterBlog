@@ -1,34 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePost } from "../hooks/usePost"
+import { useUserPosts } from "../hooks/useUserPosts";
 
 const Home = () => {
     const { user } = useParams();
-    const [posts, setPosts] = useState(null)
-    //const [error, setError] = useState(null)
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
     const {post, error, isLoading, data} = usePost()
 
-    const makeApiCall = async () => {
-        const response = await fetch(`http://localhost:3000/user/${user}`)
-        const json = await response.json()
+    const {getUserPosts, userPostError, userPostIsLoading, userPostData} = useUserPosts()
 
-        if(response.ok){
-            setPosts(json)
-        }
-        if(!response.ok){
-            setError(json.error)
-        }
-    }
 
     useEffect(() => {
-        makeApiCall()
+        getUserPosts(user)
     }, [user])
 
     useEffect(() => {
-        makeApiCall()
+        getUserPosts(user)
     },[data])
 
     const publish = async (e) => {
@@ -57,7 +47,7 @@ const Home = () => {
 
         </form>
 
-        {posts && posts.map((post) => (
+        {userPostData && userPostData.map((post) => (
             <div className="post" key={post._id}>
                 <h3>{post.title}</h3>
                 <p>{post.body}</p>
@@ -65,9 +55,13 @@ const Home = () => {
 
         ))}
 
-        {error && (
+        {userPostError && 
             <div className="error">{error}</div>
-        )}
+        }
+
+        {userPostIsLoading && 
+            <div className="loading">Loading...</div>
+        }
         </>
     )
 }
