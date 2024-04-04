@@ -10,12 +10,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if(password !== passwordCheck){
-            console.log("passwords do not match")
-            return
-        }
-
-        await signup(username, password)
+        await signup(username, password, passwordCheck)
     }
 
     return(

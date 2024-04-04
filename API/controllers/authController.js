@@ -6,10 +6,10 @@ const createWebToken = (_id) => {
 }
 
 const signup = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password , passwordCheck} = req.body;
 
     try{
-        const user = await User.signup(username, password)
+        const user = await User.signup(username, password, passwordCheck)
         const token = createWebToken(user._id)
         res.status(200).json({user, token})
     }catch (error) {

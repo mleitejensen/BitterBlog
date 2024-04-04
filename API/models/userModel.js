@@ -14,9 +14,13 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-userSchema.statics.signup = async function(username, password) {
+userSchema.statics.signup = async function(username, password, passwordCheck) {
     if (!username || !password) {
       throw Error('All fields must be filled')
+    }
+
+    if(password !== passwordCheck){
+      throw Error("Passwords do not match")
     }
 
     const exists = await this.findOne({ username })
