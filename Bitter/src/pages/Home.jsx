@@ -48,9 +48,9 @@ const Home = () => {
         </form>
 
         {userPostData && userPostData.map((post) => (
-            <div className="post" key={post._id}>
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
+            <div className="post" key={post?._id}>
+                <h3>{post?.title}</h3>
+                <p>{post?.body}</p>
             </div>
 
         ))}
