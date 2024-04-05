@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { useAuthContext } from "./useAuthContext"
+import { useLogout } from "./useLogout"
 
 export const usePost = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const [data, setData] = useState(null)
     const {user} = useAuthContext()
+    const {logout} = useLogout()
     
 
     const post = async (title, body, username) => {
@@ -27,8 +29,12 @@ export const usePost = () => {
         const json = await response.json()
 
         if(!response.ok){
+            if(response.status === 401){
+                logout()
+            }else{
+                setError(json.error)
+            }
             setIsLoading(false)
-            setError(json.error)
         }
         if(response.ok){
             setIsLoading(false)

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useGetAllPosts } from "../hooks/useGetAllPosts"
+import { useLogout } from "../hooks/useLogout"
 
 const Posts = () => {
     const { getPosts, posts, isLoading, error } = useGetAllPosts()

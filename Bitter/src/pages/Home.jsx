@@ -4,6 +4,7 @@ import { usePost } from "../hooks/usePost"
 import { useUserPosts } from "../hooks/useUserPosts";
 import { useAuthContext } from '../hooks/useAuthContext'
 import { Navigate } from 'react-router-dom'
+import { useLogout } from "../hooks/useLogout";
 
 const Home = () => {
     const { user } = useAuthContext()
