@@ -51,7 +51,7 @@ const Home = () => {
                 reset="true" 
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
-            ></textarea>
+            ></textarea> <br />
             {error && <div className="error">{error}</div>}
             <button disabled={isLoading} onClick={publish}>Publish</button>
 

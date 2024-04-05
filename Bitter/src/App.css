@@ -1,55 +1,75 @@
-.pages{
+.pages {
+
   max-width: 1600px;
+
   padding: 10px;
-  margin: 0 auto;
-  place-items: center;
-}
 
+  margin: 0 auto;
+
+}
+ 
 textarea {
+
   resize: none;
-}
 
+}
+ 
 header {
+
   background: var(--secondary);
+
   color: var(--text);
+
   box-shadow: 0px 3px 6px #121416;
+
 }
+ 
 nav {
-  max-width: 1400px;
-  max-height: 100px;
-  margin: 0 auto;
-  padding: 10px 20px;
+
+  max-width: 100%; /* Adjusted */
+
+  padding: 10px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-}
 
-.navLoginSignup{
+}
+ 
+.navLoginSignup {
+
   display: flex;
-}
 
+}
+ 
 header a {
+
   color: black;
+
   text-decoration: none;
+
 }
-
-
-.loginForm{
-  display: flexbox;
+ 
+.loginForm {
+  display: flex;
+  flex-direction: column; /* Adjusted */
   background-color: white;
   border-radius: 4px;
   box-shadow: 1px 1px 6px 1px;
-  max-width: 30%;
+  width: 80%;
+  max-width: 300px; /* Adjusted */
   margin: 6rem auto;
   padding: 5% 10%;
 }
-
-.loginForm *{
+ 
+.loginForm * {
   margin: 0 auto;
   text-align: center;
 }
-
-.loginForm input{
+ 
+.loginForm input {
   border: 0px;
   border-bottom: 1px solid;
   font-size: 1.5rem;
@@ -57,14 +77,13 @@ header a {
   width: 100%;
   text-align: left;
 }
-
-.loginForm button{
-  position: relative;
-  left: 50%;
-  translate: -50%;
+ 
+.loginForm button {
+  margin-top: 1rem; /* Adjusted */
+  align-self: center; /* Adjusted */
 }
-
-.error{
+ 
+.error {
   text-align: center;
   background-color: red;
   border-radius: 4px;
@@ -73,34 +92,92 @@ header a {
   margin: 1rem 0;
   padding: 0.3rem 0.1rem;
 }
-
-.post{
+ 
+.post {
+  word-wrap: break-word;
   box-sizing: border-box;
   border: 1px solid black;
   border-radius: 4px;
-  margin: 1rem auto;
+  margin: 1rem 10%;
   padding: 0.2rem 1rem;
   font-size: 3rem;
-  max-width: 70%;
-  flex-wrap: wrap;
+  max-width: 100%; /* Adjusted */
 }
 
-.publish{
+.post p{
+  font-size: 2rem;
+}
+ 
+.publish {
   box-sizing: border-box;
   position: relative;
   border: 1px solid black;
   border-radius: 4px;
-  max-width: 70%;
-  margin: 0 auto;
+  margin: 1rem 10%;
+  padding: 0.2rem 1rem;
+  font-size: 3rem;
+  max-width: 100%;
   display: flexbox;
+  flex-wrap: wrap; /* Added */
 }
-
-.publish input{
+ 
+.publish input {
   border: none;
   border-bottom: 1px;
 }
-
-.publish *{
+ 
+.publish * {
+  max-width: 90%;
   margin: 1rem 1rem;
   font-size: 2rem;
+}
+ 
+/* Media Queries */
+
+@media screen and (max-width: 700px) {
+
+  .post{
+    font-size: 2em;
+  }
+
+  .post p {
+    font-size: 0.5em;
+  }
+
+  .publish input {
+    border: none;
+    border-bottom: 1px;
+  }
+   
+  .publish textarea {
+    font-size: 0.5em;
+  }
+  .publish input{
+    font-size: 0.5em;
+  }
+  .publish button{
+    font-size: 0.5em;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  .post{
+    font-size: 1.5em;
+  }
+  .post p {
+    font-size: 0.5em;
+  }
+
+  .publish textarea {
+    font-size: 0.4em;
+  }
+  .publish input{
+    font-size: 0.4em;
+  }
+  .publish button{
+    font-size: 0.3em;
+  }
+
 }
