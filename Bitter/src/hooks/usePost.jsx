@@ -31,6 +31,7 @@ export const usePost = () => {
         if(!response.ok){
             if(response.status === 401){
                 logout()
+                alert("User session expired, you have been logged out.")
             }else{
                 setError(json.error)
             }
