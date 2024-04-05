@@ -17,6 +17,7 @@ const Navbar = () => {
         <Link to="/">
           <h1>Logo</h1>
         </Link>
+
         {!user && (
         <Link to="/">
             <h1>Bitter</h1>
@@ -27,6 +28,7 @@ const Navbar = () => {
             <h1>Bitter - {user.username}</h1>
         </Link>
         )}
+
         {user && (
           <div>
             <button onClick={handleClick}>Logout</button>
@@ -34,11 +36,11 @@ const Navbar = () => {
         )}
         {!user && (
           <div className='navLoginSignup'>
-            <Link to="/login">
+            <Link to="/sign-in">
                 <h1>Login</h1>
             </Link>
             <h1>/</h1>
-            <Link to="/signup">
+            <Link to="/sign-up">
                 <h1>Signup</h1>
           </Link>
           </div>

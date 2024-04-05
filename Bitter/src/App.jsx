@@ -24,11 +24,11 @@ function App() {
               element={user ? <Home /> : <Navigate to="/" />} 
             />
             <Route 
-              path="/login" 
+              path="/sign-in" 
               element={!user ? <Login /> : <Navigate to="/"/>} 
             />
             <Route 
-              path="/signup" 
+              path="/sign-up" 
               element={!user ? <Signup /> : <Navigate to="/"/>} 
             />
             <Route 
