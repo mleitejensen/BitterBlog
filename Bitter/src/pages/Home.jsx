@@ -2,9 +2,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePost } from "../hooks/usePost"
 import { useUserPosts } from "../hooks/useUserPosts";
+import { useAuthContext } from '../hooks/useAuthContext'
+import { Navigate } from 'react-router-dom'
 
 const Home = () => {
-    const { user } = useParams();
+    const { user } = useAuthContext()
+    const { username } = useParams();
+
+    if(user.username !== username){
+        return(
+            <Navigate to="/"/>
+        )
+    }
+
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
@@ -14,17 +24,17 @@ const Home = () => {
 
 
     useEffect(() => {
-        getUserPosts(user)
-    }, [user])
+        getUserPosts(username)
+    }, [username])
 
     useEffect(() => {
-        getUserPosts(user)
+        getUserPosts(username)
     },[data])
 
     const publish = async (e) => {
         e.preventDefault()
 
-        await post(title, body, user)
+        await post(title, body, username)
     }
 
     return(

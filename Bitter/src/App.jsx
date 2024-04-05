@@ -20,7 +20,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route 
-              path="/home/:user" 
+              path="/home/:username" 
               element={user ? <Home /> : <Navigate to="/" />} 
             />
             <Route 
