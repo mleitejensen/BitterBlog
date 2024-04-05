@@ -1,29 +1,12 @@
 import { useEffect, useState } from "react"
+import { useGetAllPosts } from "../hooks/useGetAllPosts"
 
 const Posts = () => {
-    const [posts, setPosts] = useState(null)
+    const { getPosts, posts, isLoading, error } = useGetAllPosts()
 
-    const makeApiCall = async () => {
-        try {
-            const response = await fetch('http://localhost:3000/latest');
-            let data = await response.json();
-            setPosts(data)
-          }
-          catch (error) {
-            console.log(error)
-          }
-    }
     useEffect(() => {
-        makeApiCall()
-
-
+        getPosts()
     }, [])
-
-    useEffect(() => {
-        console.log(posts)
-    }, [posts])
-
-
 
     return(
         <>
@@ -37,6 +20,10 @@ const Posts = () => {
             }
             </div>
         ))}
+
+        {isLoading && <div className="loading">Loading</div>}
+
+        {error && <div className="error">{error}</div>}
         
         </>
     )
