@@ -114,6 +114,12 @@ header a {
   margin: 1rem 1rem;
   font-size: 2rem;
 }
+
+.errorBox{
+  min-height: 50px;
+  max-height: 50px;
+  box-sizing: border-box;
+}
  
 /* Media Queries */
 
