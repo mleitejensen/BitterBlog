@@ -19,6 +19,7 @@ const getLatest = async (req, res) => {
 
 const createPost = async (req, res) => {
     const {username, title, body} = req.body
+    console.log("[controller] " + req.user)
     try{
         if(!username || !body || !title){
             throw Error("All fields must be filled.")
