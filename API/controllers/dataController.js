@@ -56,7 +56,7 @@ const deletePost = async (req, res) => {
         const findPost = await DataModel.findOne({_id: postID})
         const findUser = await User.findOne({_id: req.user._id})
         if(findPost.username !== findUser.username){
-            console.log(indPost.username, findUser.username)
+            console.log(findPost.username, findUser.username)
             throw Error("You do not own that post")
 
         }
