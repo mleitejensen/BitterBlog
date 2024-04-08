@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route 
               path="/home/:username" 
-              element={user ? <Home /> : <Navigate to={`/home/${user?.username}`} />} 
+              element={user ? <Home /> : <Navigate to="/" />} 
             />
             <Route 
               path="/sign-in" 
