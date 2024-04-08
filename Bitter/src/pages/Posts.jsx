@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useGetAllPosts } from "../hooks/useGetAllPosts"
+import { useLogout } from "../hooks/useLogout"
 
 const Posts = () => {
     const { getPosts, posts, isLoading, error } = useGetAllPosts()
@@ -12,12 +13,10 @@ const Posts = () => {
         <>
         {posts && posts.map((post) => (
             <div key={post?._id}>
-            {post &&
             <div className="post">
                 <h3>{post?.title}</h3>
                 <p>{post?.body}</p>
             </div>
-            }
             </div>
         ))}
 

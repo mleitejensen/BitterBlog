@@ -4,6 +4,7 @@ import { usePost } from "../hooks/usePost"
 import { useUserPosts } from "../hooks/useUserPosts";
 import { useAuthContext } from '../hooks/useAuthContext'
 import { Navigate } from 'react-router-dom'
+import { useDeletePost } from "../hooks/useDeletePost";
 
 const Home = () => {
     const { user } = useAuthContext()
@@ -22,19 +23,29 @@ const Home = () => {
 
     const {getUserPosts, userPostError, userPostIsLoading, userPostData} = useUserPosts()
 
+    const {deletePost, deleteError, deleteIsLoading, deleteData} = useDeletePost()
+
 
     useEffect(() => {
-        getUserPosts(username)
+        getUserPosts(user.username)
     }, [username])
 
     useEffect(() => {
-        getUserPosts(username)
+        getUserPosts(user.username)
     },[data])
+
+    useEffect(() => {
+        getUserPosts(user.username)
+    },[deleteData])
 
     const publish = async (e) => {
         e.preventDefault()
 
-        await post(title, body, username)
+        await post(title, body, user.username)
+    }
+
+    const deleteButton = (_id) => {
+        deletePost(_id)
     }
 
     return(
@@ -57,16 +68,21 @@ const Home = () => {
 
         </form>
 
+        {deleteError && 
+            <div className="error">{deleteError}</div>
+        }
+       
+
         {userPostData && userPostData.map((post) => (
             <div className="post" key={post?._id}>
                 <h3>{post?.title}</h3>
                 <p>{post?.body}</p>
+                <button className="delete" disabled={deleteIsLoading} onClick={() => deleteButton(post?._id)}>Delete</button>
             </div>
-
         ))}
 
         {userPostError && 
-            <div className="error">{error}</div>
+            <div className="error">{userPostError}</div>
         }
 
         {userPostIsLoading && 
