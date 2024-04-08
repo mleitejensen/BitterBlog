@@ -9,7 +9,7 @@ export const useUserPosts = () => {
         setUserPostError(null)
         setUserPostIsLoading(true)
 
-        const response = await fetch(`http://localhost:3000/user/${user}`)
+        const response = await fetch(`http://10.12.6.51/user/${user}`)
         const json = await response.json()
 
         if(!response.ok){

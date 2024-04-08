@@ -10,7 +10,7 @@ export const useGetAllPosts = () => {
         setError(null)
         setIsLoading(true)
 
-        const response = await fetch('http://localhost:3000/latest');
+        const response = await fetch('http://10.12.6.51/latest');
         let data = await response.json();
 
         if(!response.ok){
