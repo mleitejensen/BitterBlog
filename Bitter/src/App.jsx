@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Posts from './pages/Posts'
 import User from './pages/User'
 import Info from './pages/Info'
+import Testing from './pages/Testing'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -39,12 +40,16 @@ function App() {
               element={<Posts />} 
             />
             <Route 
-              path="/:user" 
-              element={<User />} 
-            />
-            <Route 
               path="/info" 
               element={<Info />} 
+            />
+            <Route 
+              path="/test" 
+              element={<Testing />} 
+            />
+            <Route 
+              path="/:user" 
+              element={<User />} 
             />
           </Routes>
         </div>
