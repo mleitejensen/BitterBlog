@@ -30,9 +30,14 @@ const Navbar = () => {
         )}
 
         {user && (
+          <>
+            <Link to="/info">
+              <h1>Info</h1>
+            </Link>
           <div>
             <button onClick={handleClick}>Logout</button>
           </div>
+          </>
         )}
         {!user && (
           <div className='navLoginSignup'>

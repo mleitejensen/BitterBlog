@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Posts from './pages/Posts'
 import User from './pages/User'
+import Info from './pages/Info'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -40,6 +41,10 @@ function App() {
             <Route 
               path="/:user" 
               element={<User />} 
+            />
+            <Route 
+              path="/info" 
+              element={<Info />} 
             />
           </Routes>
         </div>
