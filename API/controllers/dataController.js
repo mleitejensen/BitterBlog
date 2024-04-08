@@ -1,4 +1,5 @@
 const DataModel = require("../models/dataModel")
+const User = require("../models/userModel")
 
 const maxBodyLength = 100
 const latestPosts = 5
@@ -19,7 +20,7 @@ const getLatest = async (req, res) => {
 
 const createPost = async (req, res) => {
     const {username, title, body} = req.body
-    console.log("[controller] " + req.user)
+    console.log("[controller] " + req.user._id)
     try{
         if(!username || !body || !title){
             throw Error("All fields must be filled.")
@@ -49,8 +50,28 @@ const getUserPosts = async (req, res) => {
     }
 }
 
+const deletePost = async (req, res) => {
+    const {postID} = req.body
+    try{
+        const findPost = await DataModel.findOne({_id: postID})
+        const findUser = await User.findOne({_id: req.user._id})
+        if(findPost.username !== findUser.username){
+            console.log(indPost.username, findUser.username)
+            throw Error("You do not own that post")
+
+        }
+        const deletePost = await DataModel.deleteOne({_id: postID})
+        res.status(200).json(deletePost)
+
+    }catch(error){
+        res.status(400).json({ error: error.message })
+    }
+
+}
+
 module.exports = {
     getLatest,
     createPost,
     getUserPosts,
+    deletePost
 }
