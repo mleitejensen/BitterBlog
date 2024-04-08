@@ -27,24 +27,25 @@ const Home = () => {
 
 
     useEffect(() => {
-        getUserPosts(username)
+        getUserPosts(user.username)
     }, [username])
 
     useEffect(() => {
-        getUserPosts(username)
+        getUserPosts(user.username)
     },[data])
 
     useEffect(() => {
-        getUserPosts(username)
+        getUserPosts(user.username)
     },[deleteData])
 
     const publish = async (e) => {
         e.preventDefault()
 
-        await post(title, body, username)
+        await post(title, body, user.username)
     }
 
     const deleteButton = (_id) => {
+        console.log(_id)
         deletePost(_id)
     }
 
@@ -71,14 +72,17 @@ const Home = () => {
         {deleteError && 
             <div className="error">{deleteError}</div>
         }
+       
 
         {userPostData && userPostData.map((post) => (
             <div className="post" key={post?._id}>
                 <h3>{post?.title}</h3>
                 <p>{post?.body}</p>
-                <button disabled={deleteIsLoading} onClick={() => deleteButton(post?._id)}>Delete</button>
+                <button className="delete" disabled={deleteIsLoading} onClick={() => {
+                    deleteButton(post?._id); 
+                   
+                }}>Delete</button>
             </div>
-
         ))}
 
         {userPostError && 

@@ -20,7 +20,6 @@ const getLatest = async (req, res) => {
 
 const createPost = async (req, res) => {
     const {username, title, body} = req.body
-    console.log("[controller] " + req.user._id)
     try{
         if(!username || !body || !title){
             throw Error("All fields must be filled.")
@@ -58,7 +57,6 @@ const deletePost = async (req, res) => {
         if(findPost.username !== findUser.username){
             console.log(findPost.username, findUser.username)
             throw Error("You do not own that post")
-
         }
         const deletePost = await DataModel.deleteOne({_id: postID})
         res.status(200).json(deletePost)

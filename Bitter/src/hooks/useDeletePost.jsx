@@ -38,7 +38,7 @@ export const useDeletePost = () => {
             setDeleteIsLoading(false)
         }
         if(response.ok){
-            setDeleteData(true)
+            setDeleteData(json)
             setDeleteIsLoading(false)
         }
     }
