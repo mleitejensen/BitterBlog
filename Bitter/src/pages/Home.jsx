@@ -83,7 +83,7 @@ const Home = () => {
         ))}
 
         {userPostError && 
-            <div className="error">{error}</div>
+            <div className="error">{userPostError}</div>
         }
 
         {userPostIsLoading && 
