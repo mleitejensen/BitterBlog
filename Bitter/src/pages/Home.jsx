@@ -78,10 +78,7 @@ const Home = () => {
             <div className="post" key={post?._id}>
                 <h3>{post?.title}</h3>
                 <p>{post?.body}</p>
-                <button className="delete" disabled={deleteIsLoading} onClick={() => {
-                    deleteButton(post?._id); 
-                   
-                }}>Delete</button>
+                <button className="delete" disabled={deleteIsLoading} onClick={() => deleteButton(post?._id)}>Delete</button>
             </div>
         ))}
 
