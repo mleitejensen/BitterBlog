@@ -25,7 +25,9 @@ const Signup = () => {
             <br />
 
             {/* error message here */}
-            {error && <div className="error">{error}</div>}
+            <div className="errorBox">
+                {error && <div className="error">{error}</div>}
+            </div>
 
             <button disabled={isLoading}>Sign up</button>
         </form>
