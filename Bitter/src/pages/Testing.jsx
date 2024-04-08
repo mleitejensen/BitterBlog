@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
 import { useGetAllPosts } from "../hooks/useGetAllPosts"
 import { useDeletePost } from "../hooks/useDeletePost";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Testing = () => {
+    const { user } = useAuthContext()
     const { getPosts, posts, isLoading, error } = useGetAllPosts()
     const {deletePost, deleteError, deleteIsLoading, deleteData} = useDeletePost()
 
     const [currentDelete, setCurrentDelete] = useState(null)
+    const [userError, setUserError] = useState(null)
 
     useEffect(() => {
         getPosts()
@@ -17,12 +20,17 @@ const Testing = () => {
     }, [deleteData])
 
     const deleteButton = (_id) => {
+        setUserError(null)
         setCurrentDelete(_id)
+        if(!user){
+            return setUserError("You are not logged in")
+        }
+
         deletePost(_id)
     }    
 
     return(
-        <>
+        <> 
 
         {posts && posts.map((post) => (
             <div className="post" key={post?._id}>
@@ -32,6 +40,7 @@ const Testing = () => {
                 {currentDelete == post?._id &&
                 <>
                     {deleteError && <div className="error">{deleteError}</div>}
+                    {userError && <div className="error">{userError}</div>}
                 </>
                 }
             </div>
