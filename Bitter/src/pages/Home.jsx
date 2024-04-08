@@ -45,7 +45,6 @@ const Home = () => {
     }
 
     const deleteButton = (_id) => {
-        console.log(_id)
         deletePost(_id)
     }
 

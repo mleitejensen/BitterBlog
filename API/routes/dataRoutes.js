@@ -9,6 +9,6 @@ router.get("/user/:user", getUserPosts)
 
 router.use(requireAuth)
 router.post("/post", createPost)
-router.post("/delete", deletePost)
+router.delete("/delete", deletePost)
 
 module.exports = router

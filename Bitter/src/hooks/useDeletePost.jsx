@@ -19,7 +19,7 @@ export const useDeletePost = () => {
         }
 
         const response = await fetch("http://localhost:3000/delete", {
-            method: "POST",
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${user.token}`
