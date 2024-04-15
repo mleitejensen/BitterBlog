@@ -18,7 +18,7 @@ export const useDeletePost = () => {
             return setDeleteError("you must be logged in")
         }
 
-        const response = await fetch("http://localhost:3000/delete", {
+        const response = await fetch("http://10.12.6.51/delete", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
